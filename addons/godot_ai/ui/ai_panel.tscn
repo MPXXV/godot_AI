@@ -1,0 +1,240 @@
+[gd_scene load_steps=2 format=3 uid="uid://godot_ai_panel"]
+
+[ext_resource type="Script" path="res://addons/godot_ai/ui/ai_panel.gd" id="1"]
+
+[node name="AiPanel" type="Control"]
+custom_minimum_size = Vector2(280, 400)
+script = ExtResource("1")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBox/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "· Godot AI"
+theme_override_font_sizes/font_size = 14
+
+[node name="ThemeButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "☀"
+tooltip_text = "Toggle light/dark theme"
+flat = true
+
+[node name="ExportButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↓"
+tooltip_text = "Export chat to .md"
+flat = true
+
+[node name="ContextButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🔍"
+tooltip_text = "Show context sent to AI"
+flat = true
+
+[node name="VSep1" type="VSeparator" parent="VBox/TopBar"]
+layout_mode = 2
+
+[node name="SessionButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "📋"
+tooltip_text = "Chat history"
+flat = true
+
+[node name="MemoryToggleButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🧠"
+tooltip_text = "Memory (0)"
+flat = true
+
+[node name="VSep2" type="VSeparator" parent="VBox/TopBar"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⚙"
+tooltip_text = "Settings"
+flat = true
+
+[node name="ClearButton" type="Button" parent="VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "✕"
+tooltip_text = "Clear conversation"
+flat = true
+
+[node name="Separator" type="HSeparator" parent="VBox"]
+layout_mode = 2
+
+[node name="MemoryPanel" type="VBoxContainer" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+
+[node name="MemoryTitle" type="Label" parent="VBox/MemoryPanel"]
+layout_mode = 2
+text = "Project Memory"
+theme_override_font_sizes/font_size = 11
+
+[node name="MemoryScroll" type="ScrollContainer" parent="VBox/MemoryPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 80)
+
+[node name="MemoryList" type="VBoxContainer" parent="VBox/MemoryPanel/MemoryScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChatLog" type="RichTextLabel" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+custom_minimum_size = Vector2(0, 200)
+
+[node name="QuickActions" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="ExplainBtn" type="Button" parent="VBox/QuickActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Explain"
+tooltip_text = "Explain the current script"
+flat = true
+theme_override_font_sizes/font_size = 10
+
+[node name="RefactorBtn" type="Button" parent="VBox/QuickActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Refactor"
+tooltip_text = "Suggest refactoring improvements"
+flat = true
+theme_override_font_sizes/font_size = 10
+
+[node name="CommentsBtn" type="Button" parent="VBox/QuickActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Comments"
+tooltip_text = "Add comments to the script"
+flat = true
+theme_override_font_sizes/font_size = 10
+
+[node name="BugsBtn" type="Button" parent="VBox/QuickActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Find bugs"
+tooltip_text = "Look for bugs in the script"
+flat = true
+theme_override_font_sizes/font_size = 10
+
+[node name="ActionRow" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="InsertButton" type="Button" parent="VBox/ActionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 28)
+text = "↙ Insert code into script"
+visible = false
+theme_override_colors/font_color = Color(0.4, 0.9, 0.6, 1)
+
+[node name="CreateButton" type="Button" parent="VBox/ActionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 28)
+text = "📄 Create new script"
+visible = false
+theme_override_colors/font_color = Color(1.0, 0.85, 0.4, 1)
+
+[node name="MemoryButton" type="Button" parent="VBox/ActionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 28)
+text = "💾 Save to memory"
+visible = false
+theme_override_colors/font_color = Color(0.6, 0.8, 1.0, 1)
+
+[node name="ContextCheck" type="CheckBox" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Include scene/script context"
+
+[node name="Input" type="TextEdit" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+placeholder_text = "Ask anything... (Enter to send, Shift+Enter for newline)"
+wrap_mode = 1
+
+[node name="InputToolbar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="AttachButton" type="Button" parent="VBox/InputToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "📎"
+tooltip_text = "Attach a file to your message"
+flat = true
+
+[node name="AttachLabel" type="Label" parent="VBox/InputToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.8, 1.0, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="Spacer" type="Control" parent="VBox/InputToolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SendButton" type="Button" parent="VBox/InputToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Send"
+
+[node name="StopButton" type="Button" parent="VBox/InputToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "■ Stop"
+visible = false
+theme_override_colors/font_color = Color(1.0, 0.4, 0.4, 1)
+
+[node name="BottomBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="VBox/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="TokenLabel" type="Label" parent="VBox/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 10

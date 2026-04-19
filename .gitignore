@@ -1,0 +1,20 @@
+# Godot
+.godot/
+*.translation
+export_presets.cfg
+
+# Editor settings (contains API keys!)
+editor_settings-*.tres
+
+# Godot AI — user-specific memory, never commit
+user://godot_ai_memory.json
+
+# Builds
+build/
+export/
+
+# OS
+.DS_Store
+Thumbs.db
+.claude/
+CLAUDE.md
